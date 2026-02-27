@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-fix-the-row-hover-highlight-left-border-stripe-and-background-color-change-in-the-sheetviewer-table-so-it-is-visible-on-mobile-devices-on-touch-mobile-screens-css-hover-pseudo-class-does-not-trigger-on-tap-replace-or-supplement-the-hover-based-highlight-with-a-tap-touch-activated-highlight-using-a-react-state-driven-approach-e-g-ontouchstart-ontouchend-or-onclick-toggling-an-active-class-on-the-row-so-that-tapping-a-row-visibly-highlights-it-with-the-colored-left-border-stripe-and-background-color-on-mobile-the-hover-effect-should-continue-to-work-on-desktop-as-before",
-      "featureTitle": "Fix the row hover highlight (left border stripe and background color change) in the SheetViewer table so it is visible on mobile devices. On touch/mobile screens, CSS :hover pseudo-class does not trigger on tap; replace or supplement the hover-based highlight with a tap/touch-activated highlight using a React state-driven approach (e.g., onTouchStart/onTouchEnd or onClick toggling an 'active' class on the row) so that tapping a row visibly highlights it with the colored left border stripe and background color on mobile. The hover effect should continue to work on desktop as before.",
+      "featureId": "feature-in-the-sheetviewer-page-hide-the-6th-column-index-5-from-both-the-table-header-row-and-all-data-rows-so-it-is-never-rendered-in-the-ui-the-column-should-be-skipped-during-render-neither-the-th-header-cell-nor-any-td-data-cell-for-that-column-index-should-appear-in-the-dom-all-other-columns-must-continue-to-display-normally",
+      "featureTitle": "In the SheetViewer page, hide the 6th column (index 5) from both the table header row and all data rows so it is never rendered in the UI. The column should be skipped during render — neither the <th> header cell nor any <td> data cell for that column index should appear in the DOM. All other columns must continue to display normally.",
       "files": [
         "frontend/src/pages/SheetViewer.tsx"
       ],
@@ -16,7 +16,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-11"
+        "REQ-12"
       ],
       "confidence": "high"
     }

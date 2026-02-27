@@ -1,37 +1,39 @@
 {
   "kind": "build_request",
-  "title": "Fix row hover highlight not appearing on mobile in SheetViewer",
+  "title": "Hide the 6th column from the SheetViewer table",
+  "projectName": "Google Sheets Viewer",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-11",
-      "text": "Fix the row hover highlight (left border stripe and background color change) in the SheetViewer table so it is visible on mobile devices. On touch/mobile screens, CSS :hover pseudo-class does not trigger on tap; replace or supplement the hover-based highlight with a tap/touch-activated highlight using a React state-driven approach (e.g., onTouchStart/onTouchEnd or onClick toggling an 'active' class on the row) so that tapping a row visibly highlights it with the colored left border stripe and background color on mobile. The hover effect should continue to work on desktop as before.",
+      "id": "REQ-12",
+      "text": "In the SheetViewer page, hide the 6th column (index 5) from both the table header row and all data rows so it is never rendered in the UI. The column should be skipped during render — neither the <th> header cell nor any <td> data cell for that column index should appear in the DOM. All other columns must continue to display normally.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-8"
         ],
         "quotes": [
-          "Same problem Highlight to be not shown"
+          "6 columns row it is written to be hide"
         ]
       },
       "acceptanceCriteria": [
-        "On mobile (touch screen), tapping a data row in the SheetViewer table causes a visible highlight: a colored left border stripe appears and the row background changes.",
-        "The highlight is visible immediately on tap and does not require a long-press or hover gesture.",
-        "On desktop, hovering over a row still shows the same left border stripe and background color change as before.",
-        "No JavaScript errors are thrown when tapping rows on mobile.",
-        "The fix does not break the alternating row shading (zebra striping) when rows are not highlighted."
+        "The 6th column (index 5) header cell is not rendered in the table header row.",
+        "No data cell for the 6th column (index 5) is rendered in any table data row.",
+        "All other columns (indices 0–4 and 6+) continue to display correctly.",
+        "The table layout and styling remain intact after removing the 6th column.",
+        "The column/row count summary in the page header accurately reflects the displayed columns (i.e., total columns minus 1 hidden)."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files listed in frontend.immutablePaths.",
-    "Do not change backend logic or data fetching behavior."
+    "Do not modify any backend files.",
+    "Do not modify any files listed under frontend.immutablePaths."
   ],
   "nonGoals": [
-    "Changing the color palette or overall visual theme.",
-    "Fixing any other mobile layout issues beyond the row highlight.",
-    "Adding row selection or editing functionality."
+    "Making the hidden column configurable or toggleable via the UI.",
+    "Hiding any column other than the 6th (index 5).",
+    "Changes to the AdminPanel page.",
+    "Any backend schema or data changes."
   ],
   "imageRequirements": {
     "required": [],

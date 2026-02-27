@@ -6,6 +6,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 
+const HIDDEN_COL_INDEX = 5; // 6th column (0-based index 5) is hidden
+
 export default function SheetViewer() {
   const { data: isValid, isLoading: isValidLoading } = useIsValid();
   const {
@@ -24,6 +26,17 @@ export default function SheetViewer() {
     if (!csvData) return { headers: [], rows: [] };
     return parseCSV(csvData);
   }, [csvData]);
+
+  // Filter out the hidden column (index 5) from headers and rows
+  const visibleHeaders = useMemo(
+    () => headers.filter((_, i) => i !== HIDDEN_COL_INDEX),
+    [headers]
+  );
+
+  const visibleRows = useMemo(
+    () => rows.map(row => row.filter((_, i) => i !== HIDDEN_COL_INDEX)),
+    [rows]
+  );
 
   const lastUpdated = dataUpdatedAt
     ? new Date(dataUpdatedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -67,12 +80,12 @@ export default function SheetViewer() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {rows.length > 0 && (
+            {visibleRows.length > 0 && (
               <span
                 className="inline-flex items-center px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs sm:text-sm font-bold text-white"
                 style={{ backgroundColor: '#16a34a' }}
               >
-                {rows.length} {rows.length === 1 ? 'row' : 'rows'}
+                {visibleRows.length} {visibleRows.length === 1 ? 'row' : 'rows'}
               </span>
             )}
             <Button
@@ -159,7 +172,7 @@ export default function SheetViewer() {
         )}
 
         {/* Empty data state */}
-        {!isLoading && !isError && isValid && headers.length === 0 && csvData !== undefined && (
+        {!isLoading && !isError && isValid && visibleHeaders.length === 0 && csvData !== undefined && (
           <div className="flex flex-col items-center justify-center py-16 sm:py-24 gap-4 animate-fade-in px-4">
             <div
               className="flex items-center justify-center w-14 h-14 rounded-xl"
@@ -177,7 +190,7 @@ export default function SheetViewer() {
         )}
 
         {/* Data table */}
-        {!isLoading && !isError && headers.length > 0 && (
+        {!isLoading && !isError && visibleHeaders.length > 0 && (
           <div className="animate-fade-in">
             {/* Summary line */}
             <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-2.5">
@@ -188,7 +201,7 @@ export default function SheetViewer() {
                 <TableIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
               </div>
               <span className="text-sm sm:text-base font-bold text-foreground tracking-tight">
-                {headers.length} columns · {rows.length} {rows.length === 1 ? 'row' : 'rows'}
+                {visibleHeaders.length} columns · {visibleRows.length} {visibleRows.length === 1 ? 'row' : 'rows'}
               </span>
             </div>
 
@@ -204,7 +217,7 @@ export default function SheetViewer() {
                       >
                         #
                       </th>
-                      {headers.map((header, i) => (
+                      {visibleHeaders.map((header, i) => (
                         <th
                           key={i}
                           className="px-3 sm:px-4 py-2.5 sm:py-3.5 text-left text-xs font-bold text-white border-r last:border-r-0 whitespace-nowrap tracking-widest uppercase"
@@ -216,7 +229,7 @@ export default function SheetViewer() {
                     </tr>
                   </thead>
                   <tbody>
-                    {rows.map((row, rowIdx) => {
+                    {visibleRows.map((row, rowIdx) => {
                       const isActive = activeRow === rowIdx;
                       return (
                         <tr
@@ -244,13 +257,13 @@ export default function SheetViewer() {
                           >
                             {rowIdx + 1}
                           </td>
-                          {headers.map((_, colIdx) => (
+                          {row.map((cell, colIdx) => (
                             <td
                               key={colIdx}
                               className="px-3 sm:px-4 py-2 sm:py-2.5 text-foreground border-r border-border last:border-r-0 whitespace-nowrap max-w-[12rem] sm:max-w-xs truncate"
-                              title={row[colIdx] || ''}
+                              title={cell || ''}
                             >
-                              {row[colIdx] ?? ''}
+                              {cell ?? ''}
                             </td>
                           ))}
                         </tr>
@@ -262,7 +275,7 @@ export default function SheetViewer() {
             </div>
 
             <p className="mt-2 sm:mt-3 text-xs text-muted-foreground text-right font-medium">
-              Showing all {rows.length} {rows.length === 1 ? 'row' : 'rows'}
+              Showing all {visibleRows.length} {visibleRows.length === 1 ? 'row' : 'rows'}
             </p>
           </div>
         )}

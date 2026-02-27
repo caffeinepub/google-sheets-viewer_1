@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 13,
+  "projectStateVersion": 15,
   "summary": "A website that displays Google Sheets data in a read-only view, accessible via a shareable link.",
   "architectural_notes": [
     "Fetch and display data from a Google Sheets source (public CSV export or Sheets API)",
@@ -9,7 +9,8 @@
   ],
   "known_issues": [
     "CSV export URL causes Temporary Redirect error unless sheet is published to web; switching to JSON API resolves this",
-    "Row hover highlight/left border stripe not appearing on mobile or after latest fix"
+    "Row hover highlight/left border stripe not appearing on mobile or after latest fix",
+    "The 6th column row header/label is incorrectly shown as 'hide' or a hidden column is being displayed unexpectedly"
   ],
   "isFixRequest": true,
   "existing_features": [
@@ -68,6 +69,14 @@
         "REQ-11"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-in-the-sheetviewer-page-hide-the-6th-column-index-5-from-both-the-table-header-row-and-all-data-rows-so-it-is-never-rendered-in-the-ui-the-column-should-be-skipped-during-render-neither-the-th-header-cell-nor-any-td-data-cell-for-that-column-index-should-appear-in-the-dom-all-other-columns-must-continue-to-display-normally",
+      "title": "In the SheetViewer page, hide the 6th column (index 5) from both the table header row and all data rows so it is never rendered in the UI. The column should be skipped during render — neither the <th> header cell nor any <td> data cell for that column index should appear in the DOM. All other columns must continue to display normally.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -124,6 +133,12 @@
     {
       "id": "AR-8",
       "summary": "Improve the visual design of the table — add highlighting and better styling/design to the data display.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Hide the 6th column (or a specific column) from the table display in the SheetViewer page.",
       "reqIds": [],
       "status": "pending"
     }

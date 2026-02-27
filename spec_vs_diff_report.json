@@ -1,11 +1,11 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-27T19:52:33.371Z",
-  "summary": "The diff implements REQ-11 by adding React state (activeRow) to SheetViewer.tsx, using onClick to toggle the active row highlight, and applying inline styles for the green left-border stripe and background color on active rows. Desktop hover is handled via onMouseEnter/onMouseLeave. Zebra striping is preserved via getRowStyle. All acceptance criteria appear to be addressed.",
+  "generatedAt": "2026-02-27T20:10:28.069Z",
+  "summary": "REQ-12 is fully implemented in the diff. The SheetViewer.tsx file introduces a HIDDEN_COL_INDEX constant (set to 5), computes visibleHeaders and visibleRows via useMemo to filter out column index 5, and uses these filtered arrays for all rendering (header row, data rows, and the row/column count summary). All acceptance criteria appear to be satisfied.",
   "missing_requirements": [],
   "hallucinated_features": [],
-  "confidence": 0.9,
+  "confidence": 0.97,
   "changed_files": [
     "frontend-file-summaries.txt",
     "frontend/src/pages/SheetViewer.tsx",

@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-27T19:52:33.375Z",
+  "generatedAt": "2026-02-27T20:10:28.072Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -11,8 +11,8 @@
     "implemented": 1,
     "items": [
       {
-        "id": "REQ-11",
-        "summary": "Fix the row hover highlight (left border stripe and background color change) in the SheetViewer table so it is visible on mobile devices. On touch/mobile screens, CSS :hover pseudo-class does not trigger on tap; replace or supplement the hover-based highlight with a tap/touch-activated highlight using a React state-driven approach (e.g., onTouchStart/onTouchEnd or onClick toggling an 'active' class on the row) so that tapping a row visibly highlights it with the colored left border stripe and background color on mobile. The hover effect should continue to work on desktop as before.",
+        "id": "REQ-12",
+        "summary": "In the SheetViewer page, hide the 6th column (index 5) from both the table header row and all data rows so it is never rendered in the UI. The column should be skipped during render — neither the <th> header cell nor any <td> data cell for that column index should appear in the DOM. All other columns must continue to display normally.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/pages/SheetViewer.tsx"

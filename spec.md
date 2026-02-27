@@ -1,12 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Fix the row hover highlight in SheetViewer so it is visible when tapping rows on mobile devices.
+**Goal:** Hide the 6th column (index 5) from the SheetViewer table so it is never rendered in the UI.
 
 **Planned changes:**
-- Replace or supplement the CSS `:hover`-only row highlight with a React state-driven touch/tap highlight using `onTouchStart`/`onTouchEnd` or `onClick` to toggle an active class on the tapped row
-- The active/tapped state should apply the same colored left border stripe and background color change as the desktop hover effect
-- Desktop hover behavior remains unchanged
-- Zebra striping (alternating row shading) is preserved when rows are not highlighted
+- Skip rendering the `<th>` header cell for column index 5 in the SheetViewer table header row
+- Skip rendering any `<td>` data cell for column index 5 in all table data rows
+- Update the column count summary in the page header to reflect the number of displayed columns (total minus 1 hidden)
 
-**User-visible outcome:** On mobile, tapping a data row in the SheetViewer table immediately shows the colored left border stripe and background highlight, matching the desktop hover experience.
+**User-visible outcome:** The SheetViewer table no longer shows the 6th column in either the header or any data row; all other columns and the table layout remain unchanged.
