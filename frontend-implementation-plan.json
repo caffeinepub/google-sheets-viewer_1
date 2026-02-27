@@ -1,0 +1,25 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix row hover highlight not appearing on mobile in SheetViewer",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "summary": "Fix row hover highlight (left border stripe and background color change) in SheetViewer table so it is visible on mobile devices by replacing or supplementing CSS :hover with a React state-driven tap/touch-activated highlight (e.g., onTouchStart/onTouchEnd or onClick toggling an 'active' class on the row). The hover effect should continue to work on desktop as before.",
+      "acceptanceCriteria": [
+        "On mobile (touch screen), tapping a data row in the SheetViewer table causes a visible highlight: a colored left border stripe appears and the row background changes.",
+        "The highlight is visible immediately on tap and does not require a long-press or hover gesture.",
+        "On desktop, hovering over a row still shows the same left border stripe and background color change as before.",
+        "No JavaScript errors are thrown when tapping rows on mobile.",
+        "The fix does not break the alternating row shading (zebra striping) when rows are not highlighted."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/SheetViewer.tsx",
+          "operation": "modify",
+          "description": "Add React state to track which row index is currently tapped/active on mobile. Add onClick (or onTouchStart/onTouchEnd) handler to each data row that toggles the active row index. Apply a conditional class or inline style to the active row that adds the left border stripe and background color change. Ensure the existing hover styles remain for desktop by keeping the CSS :hover pseudo-class in place alongside the new tap-based state. Verify that the alternating row shading (zebra striping) is preserved when rows are not highlighted by using appropriate CSS specificity or conditional class application."
+        }
+      ]
+    }
+  ]
+}

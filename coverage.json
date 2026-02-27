@@ -1,0 +1,37 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-27T19:52:33.375Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 1,
+    "implemented": 1,
+    "items": [
+      {
+        "id": "REQ-11",
+        "summary": "Fix the row hover highlight (left border stripe and background color change) in the SheetViewer table so it is visible on mobile devices. On touch/mobile screens, CSS :hover pseudo-class does not trigger on tap; replace or supplement the hover-based highlight with a tap/touch-activated highlight using a React state-driven approach (e.g., onTouchStart/onTouchEnd or onClick toggling an 'active' class on the row) so that tapping a row visibly highlights it with the colored left border stripe and background color on mobile. The hover effect should continue to work on desktop as before.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/SheetViewer.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/SheetViewer.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/pages/SheetViewer.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

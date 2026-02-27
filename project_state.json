@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 13,
+  "summary": "A website that displays Google Sheets data in a read-only view, accessible via a shareable link.",
+  "architectural_notes": [
+    "Fetch and display data from a Google Sheets source (public CSV export or Sheets API)",
+    "Website is read-only; no editing of data allowed",
+    "Use Google Sheets JSON API (gviz/tq endpoint) instead of CSV export to avoid requiring 'Publish to web'; only 'Anyone with the link' viewer access is needed"
+  ],
+  "known_issues": [
+    "CSV export URL causes Temporary Redirect error unless sheet is published to web; switching to JSON API resolves this",
+    "Row hover highlight/left border stripe not appearing on mobile or after latest fix"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-create-a-read-only-public-frontend-page-that-fetches-the-cached-google-sheets-data-from-the-backend-and-displays-it-in-a-clean-scrollable-table-the-table-must-show-column-headers-derived-from-the-first-row-of-the-csv-and-all-subsequent-rows-as-data-rows-no-editing-adding-or-deleting-of-rows-is-permitted-from-this-view",
+      "title": "Create a read-only public frontend page that fetches the cached Google Sheets data from the backend and displays it in a clean, scrollable table. The table must show column headers derived from the first row of the CSV and all subsequent rows as data rows. No editing, adding, or deleting of rows is permitted from this view.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-admin-configuration-panel-accessible-via-a-separate-admin-route-that-allows-the-site-owner-to-input-and-save-the-google-sheets-public-csv-export-url-and-manually-trigger-a-data-refresh-this-panel-should-not-be-linked-from-the-public-view",
+      "title": "Create an admin configuration panel (accessible via a separate /admin route) that allows the site owner to input and save the Google Sheets public CSV export URL, and manually trigger a data refresh. This panel should not be linked from the public view.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-clean-modern-spreadsheet-inspired-visual-theme-across-the-website-use-a-light-neutral-background-with-a-professional-sans-serif-font-subtle-grid-lines-in-the-table-alternating-row-shading-for-readability-and-a-calm-green-and-white-color-palette-ensure-the-design-is-consistent-and-polished-on-both-the-public-viewer-and-the-admin-page",
+      "title": "Apply a clean, modern spreadsheet-inspired visual theme across the website. Use a light neutral background with a professional sans-serif font, subtle grid lines in the table, alternating row shading for readability, and a calm green and white color palette. Ensure the design is consistent and polished on both the public viewer and the admin page.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-enhance-the-sheetviewer-page-visual-design-with-improved-highlighting-and-styling-make-the-page-header-area-title-row-column-count-badge-and-refresh-button-more-visually-prominent-with-better-spacing-and-contrast-style-the-rows-badge-with-a-solid-green-background-and-white-text-to-make-it-stand-out-enlarge-and-bold-the-column-row-count-summary-line-below-the-header-ensure-the-table-header-row-uses-a-rich-dark-green-background-1a5c38-or-similar-with-white-bold-uppercase-text-add-a-distinct-left-border-highlight-or-colored-left-stripe-to-each-data-row-on-hover-ensure-the-table-is-horizontally-scrollable-on-mobile-without-content-being-cut-off-add-a-subtle-card-shadow-container-around-the-table-for-depth-and-improve-the-overall-page-background-from-flat-grey-to-a-very-light-green-tinted-white-to-tie-the-design-together",
+      "title": "Enhance the SheetViewer page visual design with improved highlighting and styling: make the page header area (title, row/column count badge, and refresh button) more visually prominent with better spacing and contrast; style the '# rows' badge with a solid green background and white text to make it stand out; enlarge and bold the column/row count summary line below the header; ensure the table header row uses a rich dark green background (#1a5c38 or similar) with white bold uppercase text; add a distinct left border highlight or colored left stripe to each data row on hover; ensure the table is horizontally scrollable on mobile without content being cut off; add a subtle card/shadow container around the table for depth; and improve the overall page background from flat grey to a very light green-tinted white to tie the design together.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-sheetviewer-page-mobile-layout-so-that-the-entire-page-displays-correctly-on-small-screens-ensure-the-page-header-area-title-badges-refresh-button-wraps-and-stacks-gracefully-on-narrow-viewports-without-overflow-or-clipping-the-table-container-must-be-horizontally-scrollable-on-mobile-with-no-content-cut-off-using-overflow-x-auto-on-the-wrapper-and-min-width-constraints-on-the-table-so-columns-are-never-collapsed-to-zero-width-ensure-padding-font-sizes-and-spacing-are-appropriate-for-mobile-screens-e-g-reduce-horizontal-padding-use-smaller-font-sizes-for-badges-and-summary-text-on-small-screens-fix-any-elements-that-overflow-the-viewport-width-and-cause-horizontal-page-scroll-at-the-body-root-level",
+      "title": "Fix the SheetViewer page mobile layout so that the entire page displays correctly on small screens. Ensure the page header area (title, badges, refresh button) wraps and stacks gracefully on narrow viewports without overflow or clipping. The table container must be horizontally scrollable on mobile with no content cut off, using overflow-x: auto on the wrapper and min-width constraints on the table so columns are never collapsed to zero width. Ensure padding, font sizes, and spacing are appropriate for mobile screens (e.g., reduce horizontal padding, use smaller font sizes for badges and summary text on small screens). Fix any elements that overflow the viewport width and cause horizontal page scroll at the body/root level.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-adminpanel-page-mobile-layout-so-all-form-elements-input-fields-buttons-and-status-messages-display-correctly-on-small-screens-without-overflow-clipping-or-broken-alignment-ensure-the-url-input-field-and-action-buttons-do-not-extend-beyond-the-viewport-width",
+      "title": "Fix the AdminPanel page mobile layout so all form elements, input fields, buttons, and status messages display correctly on small screens without overflow, clipping, or broken alignment. Ensure the URL input field and action buttons do not extend beyond the viewport width.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-row-hover-highlight-left-border-stripe-and-background-color-change-in-the-sheetviewer-table-so-it-is-visible-on-mobile-devices-on-touch-mobile-screens-css-hover-pseudo-class-does-not-trigger-on-tap-replace-or-supplement-the-hover-based-highlight-with-a-tap-touch-activated-highlight-using-a-react-state-driven-approach-e-g-ontouchstart-ontouchend-or-onclick-toggling-an-active-class-on-the-row-so-that-tapping-a-row-visibly-highlights-it-with-the-colored-left-border-stripe-and-background-color-on-mobile-the-hover-effect-should-continue-to-work-on-desktop-as-before",
+      "title": "Fix the row hover highlight (left border stripe and background color change) in the SheetViewer table so it is visible on mobile devices. On touch/mobile screens, CSS :hover pseudo-class does not trigger on tap; replace or supplement the hover-based highlight with a tap/touch-activated highlight using a React state-driven approach (e.g., onTouchStart/onTouchEnd or onClick toggling an 'active' class on the row) so that tapping a row visibly highlights it with the colored left border stripe and background color on mobile. The hover effect should continue to work on desktop as before.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Display Google Sheets data on a public read-only website",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Shareable view-only link for the website",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Create a backend actor that accepts a Google Sheets CSV export URL as configuration and fetches the sheet data (using the public CSV export link format: https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv). Store the URL and cached data in stable variables so the data persists across upgrades.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Pre-configure the backend with the Google Sheets CSV export URL derived from the provided spreadsheet ID. The sheet ID is `1n-xV1ccbZYTBbX4HyqbXhQK-biFNuSvqcSyVsJk59wE`, so the CSV export URL should be set to `https://docs.google.com/spreadsheets/d/1n-xV1ccbZYTBbX4HyqbXhQK-biFNuSvqcSyVsJk59wE/export?format=csv`. Initialize the stored URL stable variable with this value so data loads automatically on first visit without requiring manual admin configuration.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Update the backend to use the new Google Sheet ID `1mYxpii0tgIQ0Z6pi3_x0ZUu2OS0ZLU3dT8H_bRjdUXk` and switch to Google Sheets JSON API so data loads without requiring 'Publish to web'.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Update the backend to fetch data from Google Sheets using the JSON API endpoint instead of the CSV export URL. The new sheet ID is `1mYxpii0tgIQ0Z6pi3_x0ZUu2OS0ZLU3dT8H_bRjdUXk`. Use the URL `https://docs.google.com/spreadsheets/d/1mYxpii0tgIQ0Z6pi3_x0ZUu2OS0ZLU3dT8H_bRjdUXk/gviz/tq?tqx=out:csv` as the stored CSV URL, which works for sheets shared as 'Anyone with the link' without requiring 'Publish to web'. Update the stable variable default/seed value to this new URL and ensure HTTP outcalls follow redirects or use a URL that does not redirect.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Update the migration module to seed the new default CSV URL `https://docs.google.com/spreadsheets/d/1mYxpii0tgIQ0Z6pi3_x0ZUu2OS0ZLU3dT8H_bRjdUXk/gviz/tq?tqx=out:csv` into the stable URL variable during canister upgrade, replacing any previously stored URL.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Improve the visual design of the table — add highlighting and better styling/design to the data display.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Google Sheets Viewer",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

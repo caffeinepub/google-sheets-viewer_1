@@ -1,0 +1,40 @@
+{
+  "kind": "build_request",
+  "title": "Fix row hover highlight not appearing on mobile in SheetViewer",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-11",
+      "text": "Fix the row hover highlight (left border stripe and background color change) in the SheetViewer table so it is visible on mobile devices. On touch/mobile screens, CSS :hover pseudo-class does not trigger on tap; replace or supplement the hover-based highlight with a tap/touch-activated highlight using a React state-driven approach (e.g., onTouchStart/onTouchEnd or onClick toggling an 'active' class on the row) so that tapping a row visibly highlights it with the colored left border stripe and background color on mobile. The hover effect should continue to work on desktop as before.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Same problem Highlight to be not shown"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On mobile (touch screen), tapping a data row in the SheetViewer table causes a visible highlight: a colored left border stripe appears and the row background changes.",
+        "The highlight is visible immediately on tap and does not require a long-press or hover gesture.",
+        "On desktop, hovering over a row still shows the same left border stripe and background color change as before.",
+        "No JavaScript errors are thrown when tapping rows on mobile.",
+        "The fix does not break the alternating row shading (zebra striping) when rows are not highlighted."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files listed in frontend.immutablePaths.",
+    "Do not change backend logic or data fetching behavior."
+  ],
+  "nonGoals": [
+    "Changing the color palette or overall visual theme.",
+    "Fixing any other mobile layout issues beyond the row highlight.",
+    "Adding row selection or editing functionality."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "backend/main.mo": "Motoko actor that stores a Google Sheets CSV export URL, fetches its CSV content via HTTP outcalls, and exposes query/update methods to get, set, validate, and fetch the sheet data.",
+  "feature_evidence.json": "Feature evidence report documenting that the SheetViewer row hover highlight was fixed for mobile touch devices using a React state-driven onClick approach in SheetViewer.tsx.",
+  "frontend-file-summaries.txt": "JSON document containing one-sentence summaries of each frontend source file, serving as a build/documentation reference for the project's frontend components.",
+  "frontend/index.css": "Base Tailwind CSS entry point defining OKLCH CSS custom properties for light and dark themes including colors for backgrounds, cards, charts, and sidebar elements.",
+  "frontend/index.html": "Minimal HTML shell for the React app, setting viewport meta, the page title 'Google Sheets Viewer', and mounting the app into a root div via main.tsx.",
+  "frontend/src/App.tsx": "Root React component that configures TanStack Router with two routes: '/' rendering SheetViewer and '/admin' rendering AdminPanel.",
+  "frontend/src/hooks/useActor.ts": "Custom hook that creates and caches an ICP backend actor (anonymous or authenticated) using React Query, and invalidates dependent queries whenever the actor or identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides an InternetIdentityProvider and useInternetIdentity hook that manage DFINITY AuthClient lifecycle, login/logout, and identity persistence with status tracking.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks wrapping all backend actor calls: checking validity, getting/setting the Google Sheets URL, fetching CSV data, and refreshing the cached sheet data.",
+  "frontend/src/index.css": "Global stylesheet importing Inter/DM Sans fonts, defining a green/white OKLCH color palette with custom sheet and success tokens, and preventing horizontal overflow on mobile via max-width and overflow-x rules.",
+  "frontend/src/lib/csvParser.ts": "Utility that parses a CSV string into a structured object with headers and rows, correctly handling quoted fields containing commas and embedded newlines.",
+  "frontend/src/main.tsx": "React app entry point that renders the app wrapped in QueryClientProvider and InternetIdentityProvider into the DOM root.",
+  "frontend/src/pages/AdminPanel.tsx": "Admin panel page at /admin route that allows the site owner to view/set the Google Sheets URL and manually trigger a data refresh, displaying success/error feedback for each action.",
+  "frontend/src/pages/SheetViewer.tsx": "Public read-only page that fetches cached Google Sheets CSV data, parses it, and renders it in a scrollable table with alternating row shading, row hover highlighting, and a refresh button.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration extending the default theme with custom fonts (Inter, DM Sans), OKLCH-based color tokens, border radius variables, box shadows, and plugins for typography, container queries, and animations.",
+  "project_state.json": "Tracks the current project state (version 13), summarizing the app's purpose, architectural decisions, known issues (e.g., row hover highlight not working on mobile), and a list of implemented features."
+}
